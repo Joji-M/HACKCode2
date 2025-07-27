@@ -120,6 +120,36 @@ def display_text(message):
     """
     print(f"Displaying on OLED: {message}")
     wrap_text(message, 128, oled)
+    
+def wrap_and_display(text, max_width=128, max_height=64, char_width=8, char_height=8):
+    """
+    Wrap and display a long string on an SSD1306 OLED.
+    Assumes 8x8 pixel font (default for MicroPython).
+    """
+    oled.fill(0)
+    lines = []
+    words = text.split()
+    current_line = ""
+
+    for word in words:
+        test_line = current_line + (" " if current_line else "") + word
+        if len(test_line) * char_width > max_width:
+            lines.append(current_line)
+            current_line = word
+        else:
+            current_line = test_line
+
+    if current_line:
+        lines.append(current_line)
+
+    # Draw lines on the OLED
+    for i, line in enumerate(lines):
+        y = i * char_height
+        if y + char_height > max_height:
+            break  # Don't overflow the screen
+        oled.text(line, 0, y)
+
+ 
 
 def display_text2(message, x,y):
     oled.text(message, x,y)
