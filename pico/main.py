@@ -42,11 +42,13 @@ def main():
             
             lumenV =  oled_display.lumens()
             ultraV = oled_display.ultra()
+            '''
             oled_display.display_text2("lumens: " + lumenV, 0, 0)
             oled_display.display_text2("cm: " + ultraV, 0, 10)
             oled_display.display_text2("Hum:" + str(hum), 0,20)
             oled_display.display_text2("Temp:" + str(temp), 0,30)
-            oled_display.display_text2(str(latest_message), 0,40)
+            '''
+            oled_display.wrap_and_display(latest_message)
             oled_display.show_display2()
    
             #print("test")
@@ -62,7 +64,7 @@ def main():
             client.publish("humidity", str(hum) )
             client.publish("ultrasonic", str(ultraV))
             client.publish("temp", str(temp))
-            sleep(4)
+            sleep(.5)
             '''
             client.publish("light","test light")
             client.publish("humdidity", "test hum" )
@@ -81,4 +83,3 @@ def main():
         
 if __name__ == "__main__":
     main()
-
