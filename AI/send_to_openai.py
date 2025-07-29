@@ -20,7 +20,7 @@ def encode_image(image_path):
     with open(image_path, "rb") as image_F:
         return base64.b64encode(image_F.read()).decode('utf-8')
 
-image_path = "7_9.png"
+image_path = "otter.png"
 base64_image = encode_image(image_path)
 
 response = client.responses.create(

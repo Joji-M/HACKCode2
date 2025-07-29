@@ -4,6 +4,8 @@ import requests
 import os
 import sys
 
+
+#Make sure the IP Address in receive.py is the same as the one seen in the serial monitor
 # Get the folder where the script is located, done for you
 script_dir = os.path.dirname(os.path.abspath(__file__))
 filename = os.path.join(script_dir, "downloaded_image.jpg")
