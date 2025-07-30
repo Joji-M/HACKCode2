@@ -1,3 +1,5 @@
+This is the presentation 
+https://youtu.be/wQsNtQqnIsk 
 # Cloning the project 
 
 - Clone the repository by running 'git clone (url)'
